@@ -1,0 +1,162 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+
+    background-image: url('descargar.png'); /* ✅ imagen corregida */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #ffffff;
+
+    /* ✨ Opcional: agrega un filtro para mejorar la lectura del texto sobre el fondo */
+    backdrop-filter: brightness(0.95);
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto; /* Más margen superior */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 16px; /* Bordes más redondeados */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra más suave y profunda */
+}
+
+h2 {
+    text-align: center;
+    color: #1E88E5;
+    margin-bottom: 30px;
+    font-weight: 700; /* Más énfasis en el título */
+    font-size: 2em;
+    border-bottom: 2px solid #ffffff; /* Separador sutil */
+    padding-bottom: 10px;
+}
+
+/* -------------------- Estilo del Total -------------------- */
+.total-container {
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border: 2px solid #1E88E5; /* Resaltar el total */
+    border-radius: 8px;
+    background-color: #e3f2fd;
+    color: #1E88E5;
+}
+
+#totalPrice {
+    font-size: 1.2em;
+    margin-left: 10px;
+    color: #0d47a1; /* Color de contraste para el valor */
+}
+
+/* -------------------- Estilo de Búsqueda -------------------- */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.search-label {
+    font-weight: 600;
+    color: #555;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #1E88E5;
+    box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
+    outline: none;
+}
+
+/* -------------------- Estilo de la Tabla -------------------- */
+.dataframe {
+    width: 100%;
+    border-collapse: collapse; /* Bordes de celdas unidos */
+    margin-top: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra sutil para la tabla */
+    border-radius: 8px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen */
+}
+
+.dataframe thead th {
+    background-color: #1E88E5;
+    color: white;
+    padding: 15px 10px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: sticky; /* Encabezado pegajoso (si el contenedor fuera desplazable) */
+    top: 0;
+}
+
+.dataframe tbody tr {
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #eee;
+}
+
+.dataframe tbody tr:nth-child(even) { /* Filas alternas para mejor legibilidad */
+    background-color: #fcfdff;
+}
+
+.dataframe tbody tr:hover { /* Efecto al pasar el ratón */
+    background-color: #e3f2fd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dataframe td {
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
+/* Estilo para las celdas de precio y cantidad */
+.price-cell, .dataframe td:nth-child(2) {
+    text-align: center; /* Centrar para mejorar la apariencia */
+    width: 20%;
+}
+.price-cell {
+    font-weight: 500;
+    color: #00796b; /* Color para los precios */
+}
+
+/* -------------------- Estilo de Inputs de Cantidad y Edición -------------------- */
+.product-quantity, .edit-price {
+    width: 70px; /* Ancho fijo para las cantidades */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.product-quantity:focus, .edit-price:focus {
+    border-color: #1E88E5;
+    outline: none;
+}
+
+/* -------------------- Estilo del Botón de Edición/Guardar -------------------- */
+button {
+    /* Los estilos del botón se definieron en script.js, pero los mantenemos aquí para el hover */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #1565C0 !important; /* El !important es para asegurar que sobreescriba el estilo inline de script.js */
+}
+
+button:active {
+    transform: scale(0.98); /* Pequeño efecto de pulsación */
+}

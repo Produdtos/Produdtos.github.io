@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Inventario de Productos</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ------------------- Estilos de portada centrada ------------------- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('descargar.png'); /* fondo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;  /* Centrado horizontal */
+            align-items: center;      /* Centrado vertical */
+        }
+
+        .portada-container {
+            background-color: rgba(255, 255, 255, 0.9); /* capa blanca translúcida */
+            text-align: center;
+            border-radius: 20px;
+            padding: 60px 80px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .portada-container h1 {
+            font-size: 2.8em;
+            color: #1E88E5;
+            margin-bottom: 40px;
+        }
+
+        .botones-acceso {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .btn-acceso {
+            display: inline-block;
+            padding: 16px 50px;
+            font-size: 1.4em;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        /* Botón para vendedores */
+        .btn-vendedor {
+            background-color: #1E88E5;
+        }
+        .btn-vendedor:hover {
+            background-color: #1565C0;
+            transform: translateY(-3px);
+        }
+
+        /* Botón para clientes */
+        .btn-cliente {
+            background-color: #4CAF50;
+        }
+        .btn-cliente:hover {
+            background-color: #388E3C;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="portada-container">
+        <h1>🛍️ Sistema de Inventario y Ventas</h1>
+
+        <div class="botones-acceso">
+            <!-- Botón para vendedores -->
+            <a href="Inventario-vendedores.html" class="btn-acceso btn-vendedor">
+                🧾 Acceso Vendedores
+            </a>
+
+            <!-- Botón para clientes o público general -->
+            <a href="Inventario.html" class="btn-acceso btn-cliente">
+                👥 Acceso Clientes
+            </a>
+        </div>
+    </div>
+</body>
+</html>
