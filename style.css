@@ -19,7 +19,7 @@ body {
     max-width: 900px;
     margin: 30px auto; /* Más margen superior */
     padding: 30px;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 16px; /* Bordes más redondeados */
     box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra más suave y profunda */
 }
@@ -159,4 +159,5 @@ button:hover {
 
 button:active {
     transform: scale(0.98); /* Pequeño efecto de pulsación */
+
 }
