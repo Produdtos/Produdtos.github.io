@@ -105,10 +105,69 @@ function calculateTotal() {
 
     totalPriceElement.textContent = `$${total.toFixed(2)}`;
 }
+//  Apartado para editar precios  
+function createEditButton() {
+    toggleEditButton = document.createElement('button');
+    toggleEditButton.textContent = "🔧 Editar precios";
+    toggleEditButton.style.marginBottom = "15px";
+    toggleEditButton.style.padding = "10px 15px";
+    toggleEditButton.style.backgroundColor = "#1E88E5";
+    toggleEditButton.style.color = "white";
+    toggleEditButton.style.border = "none";
+    toggleEditButton.style.borderRadius = "8px";
+    toggleEditButton.style.cursor = "pointer";
+    toggleEditButton.style.fontWeight = "600";
+    toggleEditButton.style.transition = "background-color 0.3s ease";
+    toggleEditButton.style.width = '20%'; // Hacer que ocupe todo el ancho para mejor visualización
+    toggleEditButton.style.marginTop = '20px'; // Agregar margen superior
 
-document.querySelectorAll('.product-quantity').forEach(input => {
-    input.addEventListener('change', calculateTotal);
-    input.addEventListener('input', calculateTotal);
-});
+    // Insertar el botón antes del contenedor de búsqueda (para que quede más accesible)
+    const searchContainer = document.querySelector('.search-container');
+    container.insertBefore(toggleEditButton, searchContainer);
 
-calculateTotal();
+    toggleEditButton.addEventListener('click', () => {
+        editMode = !editMode;
+        toggleEditButton.textContent = editMode ? "💾 Guardar precios" : "🔧 Editar precios";
+        toggleEditButton.style.backgroundColor = editMode ? "#FFC107" : "#1E88E5"; // Cambia color para indicar modo edición
+        toggleEditButton.style.color = editMode ? "#333" : "white";
+
+        const priceCells = document.querySelectorAll('.price-cell');
+        const quantityInputs = document.querySelectorAll('.product-quantity');
+        const isEditing = editMode;
+
+        // Si entramos en modo edición, desactivamos los campos de cantidad
+        quantityInputs.forEach(input => {
+            input.disabled = isEditing;
+        });
+
+        priceCells.forEach(cell => {
+            if (isEditing) {
+                // Modo Edición: Mostrar input
+                const currentPrice = parseFloat(cell.textContent.replace('$', ''));
+                cell.innerHTML = `<input type="number" step="0.01" min="0" value="${currentPrice}" class="edit-price" style="width:80%;text-align:center;padding:5px;border-radius:4px;border:1px solid #ccc;">`;
+            } else {
+                // Modo Guardar: Guardar nuevo precio y mostrarlo como texto
+                const priceInput = cell.querySelector('input');
+                if (priceInput) {
+                    let newPrice = parseFloat(priceInput.value);
+                    if (isNaN(newPrice) || newPrice < 0) {
+                        // Prevención de datos inválidos, mantiene el precio anterior si es inválido
+                        newPrice = parseFloat(cell.parentElement.querySelector('.product-quantity').dataset.price);
+                    }
+                    newPrice = newPrice.toFixed(2);
+                    
+                    const row = cell.parentElement;
+                    const quantityInput = row.querySelector('.product-quantity');
+                    
+                    // Actualizar el atributo data-price para que el cálculo total use el nuevo valor
+                    quantityInput.dataset.price = newPrice;
+                    
+                    cell.innerHTML = `$${newPrice}`;
+                }
+            }
+        });
+
+        // Recalcular el total después de guardar los precios
+        if (!isEditing) calculateTotal();
+    });
+}
